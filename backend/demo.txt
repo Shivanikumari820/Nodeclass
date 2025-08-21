@@ -1,0 +1,5 @@
+ChatGPT said:
+
+Sure 🙂 here’s a short paragraph you can use to describe what you just did with dotenv:
+
+Using dotenv allows us to keep sensitive information like database connection strings and server ports outside of our main code. Instead of hardcoding values directly in the application, we store them in a .env file and load them with require("dotenv").config(). This makes the project more secure, easier to manage, and flexible when deploying to different environments (like development, testing, or production), since we only need to update the .env file without changing the actual code.

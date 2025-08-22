@@ -1,0 +1,15 @@
+
+
+#footer{
+    border-radius: 10px;
+    height: 50px;
+    background-color: rgb(252, 250, 246);
+    color: rgb(10, 5, 5);
+    padding: 10px;
+    margin: 10px;
+}
+
+#wrapper
+{
+    height: 500px;
+}

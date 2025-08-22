@@ -1,0 +1,99 @@
+/* Login.css */
+
+/* Full-page gradient background */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #43cea2, #185a9d); /* green-blue gradient */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form card */
+form {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  width: 600px;
+  max-width: 90%;
+  transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
+.form-label {
+  font-weight: 500;
+  color: #34495e;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #185a9d;
+  box-shadow: 0 0 6px rgba(24, 90, 157, 0.4);
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #185a9d, #43cea2);
+  border: none;
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  transform: scale(1.02);
+}
+
+/* Navbar styling (same as Registration) */
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 1rem;
+}
+
+.custom-navbar .navbar-brand {
+  color: #2c3e50 !important;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.custom-navbar .nav-link {
+  color: #2c3e50 !important;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #185a9d !important; /* match login theme */
+}

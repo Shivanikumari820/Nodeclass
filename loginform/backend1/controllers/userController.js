@@ -1,40 +1,39 @@
 const UserModel = require("../models/userModel");
 
-
 const userRegistration = async (req, res) => {
-    const { name, email, password } = req.body;
-    const User = await UserModel.create({
-        name: name,
-        email: email,
-        password: password
-    })
-   res.status(201).json({msg:"You are Succesfully Registered!"});
-}
+  const { name, email, password } = req.body;
+  const user = await UserModel.create({
+    name: name,
+    email: email,
+    password: password
+  });
+  res.status(201).json({ msg: "You are Succesfully Registered!" });
+};
 
 const userLogin = async (req, res) => {
-    const {  email, password } = req.body;
-   
-   const User= await UserModel.findOne({email:email});
+  const { email, password } = req.body;
 
-        if (!User)
-        {
-           res.send("Invalid Email!");
-        }
+  const user = await UserModel.findOne({ email: email });
 
-        if (User.password!=password)
-        {
-            res.send("Invalid Password!");
-        }
+  if (!user) {
+    return res.status(400).json({ msg: "Invalid Email!" });
+  }
 
-        res.status(202).send({msg:"You are succesfully login!"})
+  if (user.password !== password) {
+    return res.status(400).json({ msg: "Invalid Password!" });
+  }
 
-    console.log(User);
-    res.send("OKK");
-}
-
-
+  // ✅ yaha sahi response bhejna hoga
+  res.status(202).json({
+    msg: "You are succesfully login!",
+    user: {
+      name: user.name,
+      email: user.email
+    }
+  });
+};
 
 module.exports = {
-    userRegistration,
-    userLogin
-}
+  userRegistration,
+  userLogin
+};

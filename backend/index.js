@@ -1,32 +1,32 @@
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const app = express();
-// const stuRoute = require('./routes/stuRoute');
-// const mongoose = require("mongoose");
-// const cors = require("cors");
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const stuRoute = require('./routes/stuRoute');
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-// // Middleware
-// app.use(cors());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// // Routes
-// app.use("/students", stuRoute);
+// Routes
+app.use("/students", stuRoute);
 
-// // MongoDB connection
+// MongoDB connection
 
-// mongoose.connect("mongodb+srv://shivanikumari4218:dEWhd5IHiOAporay@project1.ojrazgu.mongodb.net/mydb?retryWrites=true&w=majority&appName=project1", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
-// .then(() => console.log("✅ MongoDB connected"))
-// .catch((err) => console.error("❌ MongoDB connection error:", err.message));
+mongoose.connect("mongodb+srv://shivanikumari4218:dEWhd5IHiOAporay@project1.ojrazgu.mongodb.net/mydb?retryWrites=true&w=majority&appName=project1", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch((err) => console.error("❌ MongoDB connection error:", err.message));
 
 
-// // Server
-// app.listen(8000, () => {
-//   console.log("🚀 Server is running on port 8000");
-// });
+// Server
+app.listen(8000, () => {
+  console.log("🚀 Server is running on port 8000");
+});
 
 
 // const express = require("express");
@@ -143,15 +143,16 @@
 // event.emit("doorbell", "Ding Dong!");                // fire event
 
 
-let fs = require("fs")
-let rs = fs.createReadStream("demo.txt")
+// let fs = require("fs")
+// let rs = fs.createReadStream("demo.txt")
 
-rs.on("open", () => {
-  console.log("File opened successfully");
-});
+// rs.on("open", () => {
+//   console.log("File opened successfully");
+// });
 
-rs.on("error", (err) => {
-  console.error("Error occurred while opening file:", err);
-});
+// rs.on("error", (err) => {
+//   console.error("Error occurred while opening file:", err);
+// });
 
-rs.emit("open");
+// rs.emit("open");
+

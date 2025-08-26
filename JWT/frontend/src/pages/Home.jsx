@@ -17,8 +17,8 @@ const Home=()=>{
       const response = await axios.post(api, null, {headers: { "x-auth-token": token }} );
       console.log(response);
       
-      localStorage.setItem("username", response.data.name);
-      localStorage.setItem("useremail", response.data.email);
+      localStorage.setItem("username", response.data.user.name);
+      localStorage.setItem("useremail", response.data.user.email);
      navigate("/dashboard");
     }
    

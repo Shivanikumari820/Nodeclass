@@ -15,8 +15,6 @@ mongoose.connect(process.env.DBCON).then(()=>{
   console.log("DB Connected!!!");
 })
 
-
-
 app.use("/user", userRoute);
 
 

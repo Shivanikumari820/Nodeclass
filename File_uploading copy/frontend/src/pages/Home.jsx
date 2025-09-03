@@ -90,7 +90,7 @@ const res = await axios.post("http://localhost:8000/upload-multiple",
  </div>
  ))}
  </div>
- )}
+ )} 
  </div>
  );
 }

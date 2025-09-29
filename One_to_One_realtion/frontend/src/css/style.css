@@ -1,0 +1,15 @@
+
+
+
+#footer{
+    border-radius: 20px;
+    height: 100px;
+    background-color: lightslategray;
+    color: white;
+    padding: 40px;
+}
+
+#wrapper
+{
+    height: 500px;
+}

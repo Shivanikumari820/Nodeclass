@@ -1,0 +1,84 @@
+/*
+Cluster kya hota hai Node.js me?
+
+Node.js normally single thread par chalta hai, matlab ek hi CPU core use hota hai. Agar server par bahut saare requests aayenge, to ek hi thread overload ho jaata hai aur baaki CPU cores khali padhe rehte hain.
+Cluster module use karke hum apne app ke multiple copies (workers) bana sakte hain, jo alag-alag CPU cores par parallel me chalti hain.
+
+Cluster ka kaam:
+Performance improve karta hai → sabhi CPU cores ka use ho jaata hai.
+Zyada requests handle kar leta hai → load distribute ho jaata hai.
+Crash hone par worker auto restart ho jaata hai → app zyada reliable ban jaata hai.  */
+
+
+
+
+
+// const http = require('http');         // Node.js ka http module import kiya server banane ke liye
+// const cluster = require('cluster');   // cluster module import kiya multiple processes banane ke liye
+
+// // Yeh check karta hai ki abhi 'master' process chal raha hai ya 'worker'
+// if(cluster.isMaster) {
+//    console.log("Master process is running");
+
+//    // cluster.fork() naya worker process banata hai
+//    // Yaha 3 baar fork kiya → matlab 3 worker processes ban gaye
+//    cluster.fork();
+//    cluster.fork();
+//    cluster.fork();
+
+// } else {
+//     // Agar master nahi hai → iska matlab worker process chal raha hai
+//     // Har worker apna http server banayega
+//     http.createServer((req, res) => {
+       
+//        // 1 second ka delay lagaya hai (setTimeout)
+//        // taki lagge ki server kuch heavy kaam kar raha hai
+//        setTimeout(() => {
+//            res.write("<h1>Hello World</h1>"); // response bheja
+//            res.end();                         // response end kiya
+//        }, 1000);
+
+//     }).listen(5000, () => {
+//         console.log("Server is running on http://localhost:5000");
+//     });
+// }
+
+// Ab jab bhi hum http://localhost:5000 par jayenge
+// to 3 me se koi bhi worker process request handle karega
+// Isse server zyada requests handle kar payega aur performance better hogi 
+// kyunki multiple CPU cores ka use ho raha hai
+// Har baar page refresh karne par alag worker request handle kar sakta hai
+// Jaise hi koi worker crash hota hai, master usse detect karke naya worker bana deta hai
+// Isse app zyada reliable ban jaata hai
+
+// Note: Cluster module sirf Linux aur MacOS par hi kaam karta hai Windows par nahi
+
+
+
+
+//  Cluster Module in Node.js -> dynamically multiple processes banata hai jo alag-alag CPU cores par chal sakte hain.
+const http = require('http');
+const os = require('os');  // os module import kiya CPU cores ki information ke liye
+const cluster = require('cluster');
+
+console.log(os.cpus().length); // yeh system ke CPU cores ki details dega jese mere me 16 cores hain
+
+if(cluster.isMaster) {
+    console.log("Master process is running");
+    const frkLength = os.cpus().length; // jitne CPU cores hain utne hi workers banayenge
+    for(let i=0; i<frkLength; i++) {
+        cluster.fork(); // har iteration me ek naya worker process banega
+    }
+}
+else {
+    http.createServer((req, res) => {
+       setTimeout(() => {
+           res.write("<h1>Hello World</h1>"); 
+           res.end();                         
+       }, 1000);
+
+    }).listen(5000, () => {
+        console.log("Server is running on http://localhost:5000");
+    });
+}
+
